@@ -1,0 +1,48 @@
+# docker-style arch (https://github.com/docker-library/official-images#architectures-other-than-amd64)
+ARCH=${1:-$ARCH}
+
+if [ "$ARCH" = "amd64" ]; then
+    export DOCKER_ARCH=amd64
+    export GOARCH=amd64
+    export DPKG_ARCH=amd64
+    export TRIPLET=x86_64-linux-gnu
+elif [ "$ARCH" = "i386" ]; then
+    export DOCKER_ARCH=i386
+    export GOARCH=386
+    export DPKG_ARCH=i386
+    export TRIPLET=i686-linux-gnu
+elif [ "$ARCH" = "arm64v8" ]; then
+    export DOCKER_ARCH=arm64v8
+    export GOARCH=arm64
+    export DPKG_ARCH=arm64
+    export TRIPLET=aarch64-linux-gnu
+elif [ "$ARCH" = "arm32v7" ]; then
+    export DOCKER_ARCH=arm32v7
+    export GOARCH=arm
+    export DPKG_ARCH=armhf
+    export TRIPLET=arm-linux-gnueabi
+elif [ "$ARCH" = "ppc" ]; then
+    export DOCKER_ARCH=ppc
+    export GOARCH=ppc
+    export DPKG_ARCH=powerpc
+    export TRIPLET=powerpc-linux-gnu
+elif [ "$ARCH" = "ppc64" ]; then
+    export DOCKER_ARCH=ppc64
+    export GOARCH=ppc64
+    export DPKG_ARCH=ppc64
+    export TRIPLET=powerpc64-linux-gnu
+elif [ "$ARCH" = "ppc64le" ]; then
+    export DOCKER_ARCH=ppc64le
+    export GOARCH=ppc64le
+    export DPKG_ARCH=ppc64el
+    export TRIPLET=powerpc64le-linux-gnu
+else
+    echo "Unknown arch $ARCH"
+fi
+
+if [ "$ARCHMAP_PRINT" = "1" ]; then
+    echo DOCKER_ARCH=$DOCKER_ARCH
+    echo GOARCH=$GOARCH
+    echo DPKG_ARCH=$DPKG_ARCH
+    echo TRIPLET=$TRIPLET
+fi

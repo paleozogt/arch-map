@@ -58,5 +58,7 @@ if [ "$ARCHMAP_PRINT" = "1" ]; then
     echo DOCKER_ARCH=$DOCKER_ARCH
     echo GOARCH=$GOARCH
     echo DPKG_ARCH=$DPKG_ARCH
+    echo YUM_ARCH=$YUM_ARCH
+    echo GCC_ARCH=$GCC_ARCH
     echo TRIPLET=$TRIPLET
 fi
